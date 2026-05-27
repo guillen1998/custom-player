@@ -8,22 +8,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Descargar código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Instalar Java
+      - name: Setup Java 8
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 8
 
-      - name: Dar permisos
+      - name: Grant permission
         run: chmod +x gradlew
 
-      - name: Compilar APK
+      - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: Subir APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
